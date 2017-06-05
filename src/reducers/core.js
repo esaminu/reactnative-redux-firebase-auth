@@ -1,4 +1,5 @@
 import {Map} from 'immutable'
+import {Actions} from 'react-native-router-flux'
 
 export const reducer = (state = Map({authorized: false, isAuthorizing:false}), action) => {
   switch(action.type) {
@@ -7,6 +8,7 @@ export const reducer = (state = Map({authorized: false, isAuthorizing:false}), a
       return state.set('isAuthorizing',false);
       break;
     case 'LOGIN':
+        Actions.home();
         return state.set('authorized',true).set('user',action.user).set('isAuthorizing',false)
       break;
     case 'USER_FIELD_CHANGED':
